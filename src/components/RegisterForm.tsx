@@ -1,3 +1,7 @@
+"use client";
+
+import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
@@ -13,6 +17,7 @@ const RegisterForm = () => {
 
   const [btndisabled, setDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [errors, setErrors] = React.useState("");
 
   useEffect(() => {
     if (
@@ -27,15 +32,30 @@ const RegisterForm = () => {
     }
   }, [user]);
 
-  const handleRegister = (e: any) => {
-    e.preventDefault();
+  const handleRegister = async () => {
+    // e.preventDefault();
 
-    console.log(user);
+    try {
+      // console.log(user);
+      setLoading(true);
+
+      const response = await axios.post(`/api/users/register`, user);
+
+      console.log("register successfull", response?.data);
+
+      router.push("/login");
+    } catch (error: any) {
+      console.log(error.response.data.message);
+      setErrors(error?.response?.data?.message);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div>
       <section>
-        <form className="max-w-md flex flex-col gap-4 mx-auto">
+        <div className="max-w-md flex flex-col gap-4 mx-auto">
+          <div className="text-pink-600">{errors ? errors : ""}</div>
           <input
             placeholder="fullname"
             value={user.fullname}
@@ -81,7 +101,10 @@ const RegisterForm = () => {
           >
             {loading ? "loading...." : "Login"}
           </button>
-        </form>
+          <Link href={"/login"} className="text-blue-500">
+            Login your account
+          </Link>
+        </div>
       </section>
     </div>
   );
