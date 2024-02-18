@@ -51,10 +51,10 @@ export async function POST(request: NextRequest) {
         email: user.email,
       };
 
-      console.log("user from tokendata", tokenData);
+      // console.log("user from tokendata", tokenData);
 
       const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
-        expiresIn: "5m",
+        expiresIn: "50m",
       });
 
       const response = NextResponse.json({

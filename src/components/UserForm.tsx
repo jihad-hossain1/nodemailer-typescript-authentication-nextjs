@@ -42,42 +42,38 @@ const UserForm = () => {
     }
   };
   return (
-    <div>
-      <section>
-        <div className="max-w-md flex flex-col gap-4 mx-auto">
-          <div className="text-pink-600 text-sm">{errors ? errors : ""}</div>
-          <input
-            placeholder="email"
-            value={user.email}
-            type="email"
-            name="email"
-            className="bg-transparent border-green-600 border p-3 rounded-md"
-            id=""
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
-          />
-          <input
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
-            placeholder="password"
-            type="password"
-            name="password"
-            className="bg-transparent border-green-600 border p-3 rounded-md"
-            id=""
-          />
+    <div className="max-w-md flex flex-col gap-4 mx-auto">
+      <div className="text-pink-600 text-sm">{errors ? errors : ""}</div>
+      <input
+        placeholder="email"
+        value={user.email}
+        type="email"
+        name="email"
+        className="bg-transparent border-green-600 border p-3 rounded-md"
+        id=""
+        onChange={(e) => setUser({ ...user, email: e.target.value })}
+      />
+      <input
+        value={user.password}
+        onChange={(e) => setUser({ ...user, password: e.target.value })}
+        placeholder="password"
+        type="password"
+        name="password"
+        className="bg-transparent border-green-600 border p-3 rounded-md"
+        id=""
+      />
 
-          <button
-            disabled={btndisabled}
-            onClick={handleLogin}
-            type="submit"
-            className="bg-green-600 border border-green-800"
-          >
-            {loading ? "loading...." : "Login"}
-          </button>
-          <Link href={"/login/register"} className="text-blue-500">
-            create an new register
-          </Link>
-        </div>
-      </section>
+      <button
+        disabled={btndisabled}
+        onClick={handleLogin}
+        type="submit"
+        className="bg-green-600 border border-green-800"
+      >
+        {loading ? "loading...." : "Login"}
+      </button>
+      <Link href={"/login/register"} className="text-blue-500">
+        create an new register
+      </Link>
     </div>
   );
 };
