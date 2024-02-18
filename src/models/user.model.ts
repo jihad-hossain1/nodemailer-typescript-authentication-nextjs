@@ -18,6 +18,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isVerfied: {
+    type: Boolean,
+    default: false,
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
+  forgotPasswordToken: String,
+  forgotPasswordTokenExpiry: Date,
+  verifyToken: String,
+  verifyTokenExpiry: Date,
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);
