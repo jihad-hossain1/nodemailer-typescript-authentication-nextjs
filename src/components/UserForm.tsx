@@ -22,16 +22,33 @@ const UserForm = () => {
     }
   }, [user]);
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    //
-  };
+  const handleRegister = () => {};
   return (
     <div>
-      <h4>User Register</h4>
       <section>
-        <form onSubmit={handleRegister}>
-          <input type="text" name="" id="" />
+        <form className="max-w-md flex flex-col gap-4 mx-auto">
+          <input
+            placeholder="email"
+            type="email"
+            name="email"
+            className="bg-transparent border-green-600 border p-3 rounded-md"
+            id=""
+          />
+          <input
+            placeholder="password"
+            type="password"
+            name="password"
+            className="bg-transparent border-green-600 border p-3 rounded-md"
+            id=""
+          />
+
+          <button
+            onClick={handleRegister}
+            type="submit"
+            className="bg-green-600 border border-green-800"
+          >
+            {loading ? "loading...." : "Login"}
+          </button>
         </form>
       </section>
     </div>
