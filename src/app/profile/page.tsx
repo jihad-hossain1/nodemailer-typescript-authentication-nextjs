@@ -1,15 +1,14 @@
 "use client";
 
-interface User {
-  _id: string;
-}
 
+
+import { UserResponse } from "@/type/type";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const Profile = () => {
-  const [data, setData] = React.useState(null);
+const Profile: React.FC = () => {
+  const [data, setData] = useState<UserResponse | null>(null);
   const router = useRouter();
 
   const getUserDetails = async () => {
