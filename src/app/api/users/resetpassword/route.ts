@@ -1,6 +1,9 @@
 import { sendEmail } from "@/common/sendMail";
+import { connectDatabase } from "@/config/databaseConnection";
 import User from "@/models/user.model";
 import { NextRequest, NextResponse } from "next/server";
+
+connectDatabase();
 
 export async function POST(request: NextRequest) {
   try {
