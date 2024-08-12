@@ -2,13 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDatabase } from "@/config/databaseConnection";
 import User from "@/models/user.model";
 
-connectDatabase();
 
 export async function POST(request: NextRequest) {
   try {
     const requestFromBody = await request.json();
     const { token } = requestFromBody;
     console.log(token);
+
+    await  connectDatabase();
 
     const user = await User.findOne({
       verifyToken: token,
