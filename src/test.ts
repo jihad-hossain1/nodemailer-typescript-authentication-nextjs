@@ -17,6 +17,7 @@ export function middleware(request: NextRequest) {
 }
 
 console.log("test");
+console.log("test 2");
 
 export const config = {
   matcher: ["/", "/profile", "/login", "/login/register"],
